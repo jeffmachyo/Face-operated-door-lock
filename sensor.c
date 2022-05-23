@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include "camera.h"
 #include "pwm_out.h"
-#include "file_rw.c"
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #include <linux/types.h>
@@ -17,7 +16,7 @@
 #define I2C_ADDR 0x10
 char buffer[1];
 char pwm=0;
-
+//Delete the face_match variable after inserting face recognition function
 char face_match=1;
 
 int getPWMStatus(void);
@@ -68,18 +67,16 @@ int sensorRead(char* buffer) {
     		read(fd, buffer, 1);
     		printf("0x%02X\n", buffer[0]);
 		if (buffer[0] ==1) {
-			char filename[] = "./testing_images/Image%d.jpg",i;
-			startPic(filename, "-vf");
+			char filename[] = "/home/pi/Documents/TELE6550/Final/Image%d.jpg",i;
+			//startPic(filename, "-vf");
+			takePic(filename);
 			fflush(stdout);
 			sleep(5);
 			stopPic();
 			printf("Image successful!\n");
 
-			/**
-			 * Face match function in the file file_rw.c
-			 * Function name - read_file
-			 * */
-			if(read_file()){
+			//Replace face_match with the face recognition function
+			if(face_match){
 				pwm = 1;
 				printf("Door opened!\n");
 				int j = door_open();
