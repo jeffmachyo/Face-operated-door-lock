@@ -62,7 +62,7 @@ void takePic(char *filename) {
         char **cmd;
         
         cmd = malloc( 8 * sizeof(char **));
-	    cmd[0] = "raspistill"; // executable name
+        cmd[0] = "raspistill"; // executable name
         cmd[1] = "-n"; // no preview
         cmd[2] = "-vf"; // invert image
         cmd[3] = "-o"; // output file specifer
