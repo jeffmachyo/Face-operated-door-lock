@@ -62,12 +62,9 @@ void takePic(char *filename) {
         char **cmd;
         
         cmd = malloc( 8 * sizeof(char **));
-	cmd[0] = "raspistill"; // executable name
+	    cmd[0] = "raspistill"; // executable name
         cmd[1] = "-n"; // no preview
-        cmd[2] = "-vf"; // default time (overridden by -s)
-                               // but needed for clean exit
-        //cmd[count + 3] = "10"; // 10 millisecond (minimum) time for -t
-        //cmd[count + 4] = "-s"; // enable USR1 signal to stop recording
+        cmd[2] = "-vf"; // invert image
         cmd[3] = "-o"; // output file specifer
         cmd[4] = filename;
         cmd[5] = (char *)0; // terminator
