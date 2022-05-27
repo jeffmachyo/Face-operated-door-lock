@@ -11,10 +11,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdint.h>
-
+#include "cloud_service.h"
 
 #define I2C_ADDR 0x10
 char buffer[1];
+char door_status[1];
 char pwm=0;
 //Delete the face_match variable after inserting face recognition function
 char face_match=1;
@@ -56,6 +57,9 @@ int getPWMStatus() {
 }
 
 int sensorRead(char* buffer) {
+	//pwm=0;
+	char door_status[1];
+	sprintf(door_status,"%c",pwm);
 	int fd = open ("/dev/i2c-1",O_RDWR);
 	ioctl(fd,I2C_SLAVE,I2C_ADDR);
 	int i=0;
@@ -77,7 +81,10 @@ int sensorRead(char* buffer) {
 
 			//Replace face_match with the face recognition function
 			if(face_match){
-				pwm = 1;
+				pwm=1;
+				sprintf(door_status,"%i",pwm);
+				sendDataToCloud(door_status);
+				//pwm=0;
 				printf("Door opened!\n");
 				int j = door_open();
 				sleep(2);
