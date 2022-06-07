@@ -63,9 +63,8 @@ int getPWMStatus() {
 }
 
 int sensorRead(char* buffer) {
-	//pwm=0;
+	
 	char door_status[1];
-	//sprintf(door_status,"%c",pwm);
 	int fd = open ("/dev/i2c-1",O_RDWR);
 	ioctl(fd,I2C_SLAVE,I2C_ADDR);
 	int i=0;
@@ -78,7 +77,7 @@ int sensorRead(char* buffer) {
     		printf("0x%02X\n", buffer[0]);
 		if (buffer[0] ==1) {
 			char filename[] = "/home/pi/Documents/TELE6550/Final/Image%d.jpg",i;
-			//startPic(filename, "-vf");
+			
 			takePic(filename);
 			fflush(stdout);
 			sleep(5);
@@ -89,10 +88,9 @@ int sensorRead(char* buffer) {
 			if(face_match){
 				pwm=1;
                 insertData(dir);
-				//sprintf(door_status,"%i",pwm);
+				
 				char data[] = "Door open..";
 				sendDataToCloud(data);
-				//pwm=0;
 				printf("Door opened!\n");
 				int j = door_open();
 				sleep(2);
