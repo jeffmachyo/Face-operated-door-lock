@@ -125,16 +125,10 @@ int insertData(const char* s)
 		}
 		input.close();
 	}
-	//Door d1(sec,1,encoded);
+	
 	char* messageError;
-	//Door d1("Time",1,"OMG");
 	Door d1(sec,1,encoded);
-	//string st = "INSERT INTO GRADES (NAME, LNAME, AGE) VALUES('"+d1.getTimeStamp()+"', '"+d1.getImage()+"', "+to_string(d1.getDoorStatus())+");";	
     string st = "INSERT INTO DOOR (TIME, DOOR_STATE, IMAGE) VALUES('"+d1.getTimeStamp()+"', "+to_string(d1.getDoorStatus())+", '"+d1.getImage()+"');";
-    //string st = "INSERT INTO DOOR (TIME, DOOR_STATE, IMAGE) VALUES('Alice', 35, 'Tampa');";
-	//string sql("INSERT INTO GRADES (NAME, LNAME, AGE) VALUES('Alice', 'Chapa', 35);"
-	//	"INSERT INTO GRADES (NAME, LNAME, AGE) VALUES('Bob', 'Lee', 20);"
-	//	"INSERT INTO GRADES (NAME, LNAME, AGE) VALUES('Fred', 'Cooper', 24);");
 	string sql(st);
 	int exit = sqlite3_open(s, &DB);
 	/* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
@@ -145,7 +139,7 @@ int insertData(const char* s)
 	}
 	else
 		cout << "Records inserted Successfully!" << endl;
-	//delete d1;
+	
 	return 0;
 }
 
