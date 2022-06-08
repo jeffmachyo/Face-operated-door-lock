@@ -143,27 +143,6 @@ int insertData(const char* s)
 	return 0;
 }
 
-
-int deleteData(const char* s)
-{
-	sqlite3* DB;
-	char* messageError;
-
-	string sql = "DELETE FROM GRADES;";
-
-	int exit = sqlite3_open(s, &DB);
-	/* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
-	exit = sqlite3_exec(DB, sql.c_str(), callback, NULL, &messageError);
-	if (exit != SQLITE_OK) {
-		cerr << "Error in deleteData function." << endl;
-		sqlite3_free(messageError);
-	}
-	else
-		cout << "Records deleted Successfully!" << endl;
-
-	return 0;
-}
-
 int selectData(const char* s)
 {
 	sqlite3* DB;
