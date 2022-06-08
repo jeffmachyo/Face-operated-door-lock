@@ -143,25 +143,6 @@ int insertData(const char* s)
 	return 0;
 }
 
-int updateData(const char* s)
-{
-	sqlite3* DB;
-	char* messageError;
-
-	string sql("UPDATE GRADES SET GRADE = 'A' WHERE LNAME = 'Cooper'");
-
-	int exit = sqlite3_open(s, &DB);
-	/* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
-	exit = sqlite3_exec(DB, sql.c_str(), NULL, 0, &messageError);
-	if (exit != SQLITE_OK) {
-		cerr << "Error in updateData function." << endl;
-		sqlite3_free(messageError);
-	}
-	else
-		cout << "Records updated Successfully!" << endl;
-
-	return 0;
-}
 
 int deleteData(const char* s)
 {
