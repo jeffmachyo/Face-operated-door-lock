@@ -10,9 +10,7 @@ using namespace std;
 
 int createDB(const char* s);
 int createTable(const char* s);
-int deleteData(const char* s);
 int insertData(const char* s);
-int updateData(const char* s);
 int selectData(const char* s);
 int callback(void* NotUsed, int argc, char** argv, char** azColName);
 
@@ -113,7 +111,6 @@ int insertData(const char* s)
 	sqlite3* DB;
 	string line,encoded;
 	ifstream input("Image-1.jpg",ios::in | ios:: binary);
-	//ofstream output("text.txt");	
 
 	time_t now = time(0);
 	char* sec = ctime(&now);
@@ -121,7 +118,6 @@ int insertData(const char* s)
 	if (input.is_open()) {
 		while (getline(input, line)) {
 			 encoded = base64_encode(reinterpret_cast<const unsigned char*>(line.c_str()), line.length());
-			//output << encoded;
 		}
 		input.close();
 	}
