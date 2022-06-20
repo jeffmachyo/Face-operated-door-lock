@@ -8,8 +8,7 @@ static pid_t pid = 0;
 
 void stopPic(void) {
     if (pid) {
-        kill(pid, 10); // seems to stop with two signals separated
-                       // by 1 second if started with -t 10 parameter
+        kill(pid, 10); 
         sleep(1);
         kill(pid, 10);
     }
