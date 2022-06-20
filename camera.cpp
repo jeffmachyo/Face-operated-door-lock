@@ -16,7 +16,6 @@ void stopPic(void) {
 
 void takePic(char *filename) {
 	if ((pid = fork()) == 0) {
-        //char **cmd;
 	execl("/usr/bin/raspistill",
 		"/usr/bin/raspistill",
                 "-n",
