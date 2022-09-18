@@ -1,0 +1,25 @@
+[
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/main.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/main.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/main.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/initializem.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/initializem.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/initializem.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/statemachines.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/statemachines.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/statemachines.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/devicemanager.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/devicemanager.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/devicemanager.cpp"
+}
+]

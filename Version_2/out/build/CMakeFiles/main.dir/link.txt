@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/initializem.cpp.o CMakeFiles/main.dir/statemachines.cpp.o  -o main   -L/usr/bin  -Wl,-rpath,/usr/bin -lsqlite3 

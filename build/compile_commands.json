@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/main.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/main.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/main.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/sensor.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/sensor.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/sensor.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/camera.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/camera.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/camera.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/pwm_out.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/pwm_out.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/pwm_out.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/cloud_service.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/cloud_service.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/cloud_service.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/db_store.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/db_store.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/db_store.cpp"
+}
+]
