@@ -1,24 +1,24 @@
-#ifndef INITIALIZE_SM
-#define INITIALIZE_SM
+#ifndef SHUTDOWN_SM
+#define SHUTDOWN_SM
 
 
 #include "statemachines.hpp"
 #include <string>
 
 
-class InitializeSM: public StateMachine{
+class ShutdownSM: public StateMachine{
     
     public:
         // using StateMachine::StateMachine;
-        InitializeSM();
+        // ShutdownSM();
         void on_action();
         void on_entry();
         void on_exit();
 };
 
-class InitialState: public State {
+class ShutdownState: public State {
     public:
-        InitialState();
+        ShutdownState();
         void execute();
 };
 

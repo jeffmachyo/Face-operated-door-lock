@@ -3,10 +3,10 @@
 #include "statemachines.hpp"
 #include <iostream>
 
-StateMachine::StateMachine(std::string name){
-    this->name = name;
-    std::cout<<name+" state machine created"<<std::endl;
-}
+// StateMachine::StateMachine(std::string name){
+//     this->name = name;
+//     std::cout<<name+" state machine created"<<std::endl;
+// }
 
 std::string AbstractState::getName(){
     return this->name;

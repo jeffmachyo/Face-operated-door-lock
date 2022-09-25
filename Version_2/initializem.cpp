@@ -1,6 +1,7 @@
 #include "initializem.hpp"
 #include <string>
 #include <iostream>
+#include "devicemanager.hpp"
 
 // InitializeSM::InitializeSM(std::string name):StateMachine(name) {
 // InitializeSM::InitializeSM(std::string name) {
@@ -12,21 +13,30 @@
 
 // }
 void InitializeSM::on_action() {
-    std::cout<<"Action called..."<<std::endl;
+    std::cout<<"Initialize action called..."<<std::endl;
 }
 
 void InitializeSM::on_entry() {
-    std::cout<<"Beginning called..."<<std::endl;
+    std::cout<<"Initialize beginning called..."<<std::endl;
+    
 }
 
 void InitializeSM::on_exit() {
-    std::cout<<"Exit called..."<<std::endl;
+    std::cout<<"Initialize exit called..."<<std::endl;
 }
 
 void InitialState::execute() {
+    DeviceManager d;
+    d.get_factory("StateMachine")->create("InitializeSM");
     
-    InitializeSM i("InitializeSM");
-    i.on_entry();
-    i.on_action();
-    i.on_exit();
 }
+InitialState::InitialState() {
+    this->execute();
+}
+
+InitializeSM::InitializeSM() {
+    this->on_entry();
+    this->on_action();
+    this->on_exit();
+}
+

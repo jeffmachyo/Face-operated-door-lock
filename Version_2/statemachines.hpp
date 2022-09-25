@@ -9,14 +9,15 @@ class AbstractState {
         std::string getName();
         void setName(std::string name);
         // void setName(std::string name);
+        
 };
 
-class StateMachine:AbstractState{
+class StateMachine: public AbstractState{
     // protected:
     //     std::string name = std::string();
     
     public:
-        StateMachine(std::string name);
+        // StateMachine(std::string name);
         // std::string getName();
         
         virtual void on_action()=0;
@@ -25,7 +26,7 @@ class StateMachine:AbstractState{
         // virtual void execute()=0;
 };
 
-class State:AbstractState {
+class State: public AbstractState {
     public:
         virtual void execute()=0;
 };

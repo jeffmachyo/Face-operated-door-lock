@@ -21,5 +21,11 @@
   "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
   "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/devicemanager.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/devicemanager.cpp",
   "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/devicemanager.cpp"
+},
+
+{
+  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
+  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/shutdownm.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/shutdownm.cpp",
+  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/shutdownm.cpp"
 }
 ]

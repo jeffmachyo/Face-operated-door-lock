@@ -8,19 +8,22 @@
 class AbstrasctFactory {
 
     public:
-        virtual void create()=0;    
+        // virtual void create(std::string)=0;   
+        virtual std::shared_ptr<AbstractState> create(std::string)=0;  
 };
 
 
 
 class StateMachineFactory: public AbstrasctFactory {
     public:
-        void create();
+        // void create(std::string);
+        std::shared_ptr<AbstractState> create(std::string);
 };
 
 class StateFactory: public AbstrasctFactory {
     public:
-        void create();
+        // void create(std::string);
+        std::shared_ptr<AbstractState> create(std::string);
 };
 
 class DeviceManager {
