@@ -1,0 +1,3 @@
+/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build/CMakeFiles/rebuild_cache.dir
+/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build/CMakeFiles/edit_cache.dir
+/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/build/CMakeFiles/main.dir
