@@ -5,9 +5,9 @@
 
 int main() {
     std::cout<<"Ndio kuanza sasa.."<<std::endl;
-    DeviceManager d;
+    // DeviceManager d;
     // d.get_factory("StateMachine")->create();
-    d.get_factory("State")->create("InitialState");
+    DeviceManager::getInstance()->get_factory("State")->create("InitialState");
     // d.get_factory("State")->create("ShutdownState");
     
     return 0;

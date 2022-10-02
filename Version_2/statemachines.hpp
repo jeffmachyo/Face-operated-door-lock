@@ -5,6 +5,7 @@
 class AbstractState {
     protected:
         std::string name = std::string();
+        
     public:
         std::string getName();
         void setName(std::string name);
@@ -13,16 +14,16 @@ class AbstractState {
 };
 
 class StateMachine: public AbstractState{
-    // protected:
+    protected:
     //     std::string name = std::string();
     
     public:
         // StateMachine(std::string name);
         // std::string getName();
+        virtual bool on_action()=0;
+        virtual bool on_entry()=0;
+        virtual bool on_exit()=0;
         
-        virtual void on_action()=0;
-        virtual void on_entry()=0;
-        virtual void on_exit()=0;
         // virtual void execute()=0;
 };
 
