@@ -3,16 +3,23 @@
 #include <stdexcept>
 #include "initializem.hpp"
 #include "shutdownm.hpp"
+#include "idlem.hpp"
 
 
 std::shared_ptr<AbstractState> StateMachineFactory::create(std::string name) {
     if (name.compare("InitializeSM")==0) {
-        std::shared_ptr<AbstractState> p1(new InitializeSM());
+        
+        std::shared_ptr<AbstractState> p1= InitializeSM::getInstance();
 
         return p1;
     }
     else if (name.compare("ShutdownSM")==0) {
         std::shared_ptr<AbstractState> p1(new ShutdownSM());
+
+        return p1;
+    }
+    else if (name.compare("IdleSM")==0) {
+        std::shared_ptr<AbstractState> p1= IdleSM::getInstance();
 
         return p1;
     }
@@ -31,6 +38,11 @@ std::shared_ptr<AbstractState> StateFactory::create(std::string name) {
     }
     else if (name.compare("ShutdownState")==0) {
         std::shared_ptr<AbstractState> p1(new ShutdownState());
+
+        return p1;
+    }
+    else if (name.compare("IdleState")==0) {
+        std::shared_ptr<AbstractState> p1(new IdleState());
 
         return p1;
     }
@@ -56,3 +68,22 @@ std::shared_ptr<AbstrasctFactory> DeviceManager::get_factory(std::string name) {
         throw std::runtime_error("Factory sub class missing");
     }
 }
+DeviceManager::DeviceManager() {
+
+}
+std::unique_ptr<DeviceManager> DeviceManager::instance=0;
+
+std::unique_ptr<DeviceManager> DeviceManager::getInstance() {
+    if (instance==0) {
+        std::unique_ptr<DeviceManager> instance(new DeviceManager());
+
+        return instance;
+        // instance = new DeviceManager();
+    }
+    else {
+        std::unique_ptr<DeviceManager> instance=0;
+        return instance;
+    }
+    
+}
+

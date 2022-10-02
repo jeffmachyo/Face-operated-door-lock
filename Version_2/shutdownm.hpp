@@ -10,10 +10,10 @@ class ShutdownSM: public StateMachine{
     
     public:
         // using StateMachine::StateMachine;
-        // ShutdownSM();
-        void on_action();
-        void on_entry();
-        void on_exit();
+        ShutdownSM();
+        bool on_action();
+        bool on_entry();
+        bool on_exit();
 };
 
 class ShutdownState: public State {

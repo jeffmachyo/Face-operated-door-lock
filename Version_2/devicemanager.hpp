@@ -27,8 +27,14 @@ class StateFactory: public AbstrasctFactory {
 };
 
 class DeviceManager {
+    private:
+    // Using a singleton
+        static std::unique_ptr<DeviceManager> instance;
+        DeviceManager();
+
     public:
     std::shared_ptr<AbstrasctFactory> get_factory(std::string);
+    static std::unique_ptr<DeviceManager> getInstance();
 
 };
 
