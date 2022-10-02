@@ -26,10 +26,10 @@ bool InitializeSM::on_exit() {
 
 void InitialState::execute() {
     DeviceManager::getInstance()->get_factory("StateMachine")->create("InitializeSM");
-    InitializeSM::getInstance();
-    // if (InitializeSM::getInstance()->on_exit()==true) {
-        // DeviceManager::getInstance()->get_factory("State")->create("IdleState");
-    // }
+
+    if (InitializeSM::getInstance()->on_exit()==true) {
+        DeviceManager::getInstance()->get_factory("State")->create("IdleState");
+    }
      
 }
 InitialState::InitialState() {
@@ -38,8 +38,7 @@ InitialState::InitialState() {
 
 InitializeSM::InitializeSM() {
     this->on_entry();
-    // this->on_action();
-    // this->on_exit();
+    
 }
 
 std::shared_ptr<InitializeSM> InitializeSM::instance{nullptr};
@@ -48,20 +47,10 @@ std::mutex InitializeSM::m_init;
 std::shared_ptr<InitializeSM> InitializeSM::getInstance() {
     std::lock_guard<std::mutex> lock(m_init);
     if (instance==nullptr) {
-        // auto instance = std::make_shared<InitializeSM>();
-        // instance = new InitializeSM;
-        // instance = new InitializeSM();
+        
         std::shared_ptr<InitializeSM> instance1(new InitializeSM());
         instance1.swap(instance);
     }
     return instance;
-    // else {
-    //     // std::unique_ptr<InitializeSM> instance=NULL;
-    //     // return instance;
-    //     throw std::runtime_error("Created class instance more than once!");
-    //     // catch(std::runtime_error) {
-
-    //     // };
-    // }
-    return instance;
+    
 }

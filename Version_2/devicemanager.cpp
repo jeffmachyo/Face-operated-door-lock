@@ -78,7 +78,7 @@ std::unique_ptr<DeviceManager> DeviceManager::getInstance() {
         std::unique_ptr<DeviceManager> instance(new DeviceManager());
 
         return instance;
-        // instance = new DeviceManager();
+        
     }
     else {
         std::unique_ptr<DeviceManager> instance=0;
