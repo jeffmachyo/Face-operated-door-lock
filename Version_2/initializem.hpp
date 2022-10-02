@@ -14,15 +14,8 @@ class InitializeSM: public StateMachine{
         static std::mutex m_init;
         InitializeSM();
 
-    protected:
-        // InitializeSM();
-        // ~InitializeSM();
-
     public:
-        // using StateMachine::StateMachine;
-        friend std::shared_ptr<InitializeSM> std::make_shared<InitializeSM>();
-        InitializeSM(InitializeSM& other) = delete;
-        void operator = (const InitializeSM&) = delete;
+        
         bool on_action();
         bool on_entry();
         bool on_exit();
