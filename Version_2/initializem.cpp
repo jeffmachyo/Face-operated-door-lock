@@ -4,6 +4,7 @@
 #include "devicemanager.hpp"
 
 bool InitializeSM::on_action() {
+    StateMachine::on_action();
     std::cout<<"Initialize action called..."<<std::endl;
     // DeviceManager::getInstance()->get_factory("State")->create("ShutdownState");
     
@@ -12,22 +13,24 @@ bool InitializeSM::on_action() {
 }
 
 bool InitializeSM::on_entry() {
+    StateMachine::on_entry();
     std::cout<<"Initialize beginning called..."<<std::endl;
-    
+    // State::setName("InitialState");
     // return InitializeSM::on_action();
     return this->on_action();
 }
 
 bool InitializeSM::on_exit() {
+    StateMachine::on_exit();
     std::cout<<"Initialize exit called..."<<std::endl;
-    
+    this->set_finish_status(true);
     return true;
 }
 
 void InitialState::execute() {
     DeviceManager::getInstance()->get_factory("StateMachine")->create("InitializeSM");
 
-    if (InitializeSM::getInstance()->on_exit()==true) {
+    if (InitializeSM::getInstance()->get_finish_status()==true) {
         DeviceManager::getInstance()->get_factory("State")->create("IdleState");
     }
      
@@ -37,6 +40,7 @@ InitialState::InitialState() {
 }
 
 InitializeSM::InitializeSM() {
+    StateMachine::set_name("InitializeSM");
     this->on_entry();
     
 }
