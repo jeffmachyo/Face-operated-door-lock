@@ -5,10 +5,12 @@
 class AbstractState {
     protected:
         std::string name = std::string();
-        
+        bool is_finished;
     public:
         std::string getName();
         void setName(std::string name);
+        bool is_Finished();
+        void set_Finished(bool value);
         // void setName(std::string name);
         
 };

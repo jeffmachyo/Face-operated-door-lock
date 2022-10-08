@@ -60,3 +60,11 @@ void StateMachine::set_finish_status(bool status) {
 void AbstractState::setName(std::string name) {
     this->name = name;
 }
+
+bool AbstractState::is_Finished() {
+    return is_finished;
+}
+
+void AbstractState::set_Finished(bool value) {
+    this->name = value;
+}

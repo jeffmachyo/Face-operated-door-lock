@@ -2,6 +2,9 @@
 #include <string>
 #include <iostream>
 #include "devicemanager.hpp"
+#include "i2c.hpp"
+
+auto i2c_1 = I2C::getInstance("/dev/i2c-1");
 
 bool InitializeSM::on_action() {
     StateMachine::on_action();
@@ -17,19 +20,26 @@ bool InitializeSM::on_entry() {
     std::cout<<"Initialize beginning called..."<<std::endl;
     // State::setName("InitialState");
     // return InitializeSM::on_action();
+    if (i2c_1->open_check(i2c_1->get_open_var())) {
+        printf("Open for business!");
+    }
     return this->on_action();
 }
 
 bool InitializeSM::on_exit() {
     StateMachine::on_exit();
     std::cout<<"Initialize exit called..."<<std::endl;
+    this->set_Finished(true);
     this->set_finish_status(true);
     return true;
 }
 
 void InitialState::execute() {
-    DeviceManager::getInstance()->get_factory("StateMachine")->create("InitializeSM");
+    auto d1 = DeviceManager::getInstance()->get_factory("StateMachine")->create("InitializeSM");
 
+    // ds1->status();
+    std::cout<<d1->is_Finished()<<std::endl;
+    // printf()
     if (InitializeSM::getInstance()->get_finish_status()==true) {
         DeviceManager::getInstance()->get_factory("State")->create("IdleState");
     }
@@ -44,6 +54,10 @@ InitializeSM::InitializeSM() {
     this->on_entry();
     
 }
+
+// void InitializeSM::status() {
+//     std::cout<<"I am an initializer"<<std::endl;
+// }
 
 std::shared_ptr<InitializeSM> InitializeSM::instance{nullptr};
 std::mutex InitializeSM::m_init;
