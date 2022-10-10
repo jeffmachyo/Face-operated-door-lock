@@ -7,11 +7,8 @@
 auto i2c_1 = I2C::getInstance("/dev/i2c-1");
 
 bool InitializeSM::on_action() {
-    // StateMachine::on_action();
     std::cout<<"Initialize action called..."<<std::endl;
-    // DeviceManager::getInstance()->get_factory("State")->create("ShutdownState");
-    
-    // return InitializeSM::on_exit();
+
     return this->on_exit();
 }
 
@@ -36,13 +33,13 @@ bool InitializeSM::on_exit() {
 }
 
 void InitialState::execute() {
-    // auto d1 = DeviceManager::getInstance()->get_factory("StateMachine")->create("InitializeSM");
-
+    
     auto d1 = std::make_shared<InitializeFactory>()->create_state_machine();
     // d1->setName("InitialState");
     // if (InitializeSM::getInstance()->get_finish_status()==true) {
-    //     DeviceManager::getInstance()->get_factory("State")->create("IdleState");
-    // }
+    if (d1->get_finish_status()) {
+        std::cout<<"Almost there!"<<std::endl;
+    }
      
 }
 InitialState::InitialState() {

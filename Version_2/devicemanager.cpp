@@ -35,6 +35,33 @@ std::shared_ptr<State> IdleFactory::create_state() {
 DeviceManager::DeviceManager() {
  
 }
+
+std::string& DeviceManager::get_current_state() {
+    return this->current_state;
+}
+
+std::string& DeviceManager::get_next_state() {
+    return this->next_state;
+}
+
+std::string& DeviceManager::get_previous_state() {
+    return this->previous_state;
+}
+
+void DeviceManager::set_current_state(const std::string& state) {
+    this->current_state = state;
+}
+
+void DeviceManager::set_next_state(const std::string& state) {
+    this->next_state = state;
+}
+
+void DeviceManager::set_previous_state(const std::string& state) {
+    this->previous_state = state;
+}
+
+
+
 std::shared_ptr<DeviceManager> DeviceManager::instance{nullptr};
 
 std::shared_ptr<DeviceManager> DeviceManager::getInstance() {
@@ -59,6 +86,15 @@ std::shared_ptr<State> DeviceManager::create_state(std::string state) {
         throw std::runtime_error("Factory sub class missing");
     }
     
+}
+
+void DeviceManager::start() {
+    try {
+        this->create_state(this->get_next_state());
+    }
+    catch (const std::runtime_error& error) {
+        std::cout<<"No next state set.."<<std::endl;
+    }
 }
 
 

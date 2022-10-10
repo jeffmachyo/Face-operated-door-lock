@@ -4,7 +4,9 @@
 
 int main() {
     
-    // auto d1 = std::make_shared<InitializeFactory>()->create_state();
-    DeviceManager::getInstance()->create_state("InitialState");
+    auto d1 = DeviceManager::getInstance();
+    d1->set_next_state("InitialState");
+    d1->start();
+
     return 0;
 }
