@@ -5,30 +5,29 @@
 
 
 bool IdleSM::on_action() {
-    // StateMachine::on_action();
     std::cout<<"Idle action called..."<<std::endl;
-    // DeviceManager::getInstance()->get_factory("State")->create("ShutdownState");
+    std::cout<<"Waiting.."<<std::endl;
+
+    // Add if command comes in move to another state
     return this->on_exit();
 }
 
 bool IdleSM::on_entry() {
-    // StateMachine::on_entry();
     this->set_finish_status(false);
     std::cout<<"Entered Idle State.."<<std::endl;
-    // std::cout<<StateMachine::get_name()<<std::endl;
-    // this->set_finish_status(false);
+    
     return this->on_action();
 }
 
 bool IdleSM::on_exit() {
-    // StateMachine::on_exit();
+
     std::cout<<"Exiting Idle State..."<<std::endl;
     this->set_finish_status(true);
     return true;
 }
 
 void IdleState::execute() {
-    // DeviceManager::getInstance()->get_factory("StateMachine")->create("IdleSM");
+
     auto d1 = std::make_shared<IdleFactory>()->create_state_machine();
 }
 IdleState::IdleState() {
@@ -37,8 +36,7 @@ IdleState::IdleState() {
 
 IdleSM::IdleSM() {
     this->on_entry();
-    // this->on_action();
-    // this->on_exit();
+
 }
 
 std::shared_ptr<IdleSM> IdleSM::instance{nullptr};

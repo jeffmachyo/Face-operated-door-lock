@@ -47,7 +47,7 @@ class DeviceManager {
     std::string& get_previous_state();
 
     void set_current_state(const std::string&);
-    void set_next_state(const std::string&);
+    DeviceManager& set_next_state(const std::string&);
     void set_previous_state(const std::string&);
     std::shared_ptr<State> create_state(std::string state);
     void start();

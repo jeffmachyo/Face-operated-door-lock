@@ -3,11 +3,23 @@
 #include <iostream>
 #include "devicemanager.hpp"
 #include "i2c.hpp"
+#include "camera.hpp"
+#include "unistd.h"
 
 auto i2c_1 = I2C::getInstance("/dev/i2c-1");
+auto cam_1 = Camera::getInstance();
+std::string file_path = "/home/pi/Documents/TELE6550/Final/New_Image.jpg";
+
 
 bool InitializeSM::on_action() {
     std::cout<<"Initialize action called..."<<std::endl;
+    
+    cam_1->take_pic(file_path);
+    fflush(stdout);
+    sleep(5);
+    cam_1->stop_pic();
+
+    std::cout<<"Image successful..."<<std::endl;
 
     return this->on_exit();
 }
@@ -34,11 +46,11 @@ bool InitializeSM::on_exit() {
 
 void InitialState::execute() {
     
-    auto d1 = std::make_shared<InitializeFactory>()->create_state_machine();
-    // d1->setName("InitialState");
-    // if (InitializeSM::getInstance()->get_finish_status()==true) {
-    if (d1->get_finish_status()) {
-        std::cout<<"Almost there!"<<std::endl;
+    auto init_sm = std::make_shared<InitializeFactory>()->create_state_machine();
+    
+    if (init_sm->get_finish_status()) {
+        auto d1 = DeviceManager::getInstance();
+        d1->set_next_state("IdleState").start();
     }
      
 }

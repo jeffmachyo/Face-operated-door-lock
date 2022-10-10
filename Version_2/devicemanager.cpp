@@ -52,8 +52,9 @@ void DeviceManager::set_current_state(const std::string& state) {
     this->current_state = state;
 }
 
-void DeviceManager::set_next_state(const std::string& state) {
+DeviceManager& DeviceManager::set_next_state(const std::string& state) {
     this->next_state = state;
+    return *this;
 }
 
 void DeviceManager::set_previous_state(const std::string& state) {
