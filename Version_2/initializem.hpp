@@ -23,9 +23,13 @@ class InitializeSM: public StateMachine{
 };
 
 class InitialState: public State {
-    public:
+    private:
+        static std::shared_ptr<InitialState> instance;
+        // static std::mutex m_init;
         InitialState();
+    public:
         void execute();
+        static std::shared_ptr<InitialState> getInstance();
 };
 
 

@@ -4,7 +4,8 @@
 
 int main() {
     
-    DeviceManager::getInstance()->get_factory("State")->create("InitialState");
-   
+    auto d1 = DeviceManager::getInstance();
+    d1->set_next_state("InitialState").start();
+    
     return 0;
 }

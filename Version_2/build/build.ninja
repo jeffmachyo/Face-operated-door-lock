@@ -89,15 +89,22 @@ build CMakeFiles/main.dir/devicemanager.cpp.o: CXX_COMPILER__main ../devicemanag
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir
 
-build CMakeFiles/main.dir/shutdownm.cpp.o: CXX_COMPILER__main ../shutdownm.cpp || cmake_object_order_depends_target_main
-  DEP_FILE = CMakeFiles/main.dir/shutdownm.cpp.o.d
+build CMakeFiles/main.dir/idlem.cpp.o: CXX_COMPILER__main ../idlem.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/idlem.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/usr/bin
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir
 
-build CMakeFiles/main.dir/idlem.cpp.o: CXX_COMPILER__main ../idlem.cpp || cmake_object_order_depends_target_main
-  DEP_FILE = CMakeFiles/main.dir/idlem.cpp.o.d
+build CMakeFiles/main.dir/i2c.cpp.o: CXX_COMPILER__main ../i2c.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/i2c.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/usr/bin
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir
+
+build CMakeFiles/main.dir/camera.cpp.o: CXX_COMPILER__main ../camera.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/camera.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/usr/bin
   OBJECT_DIR = CMakeFiles/main.dir
@@ -111,7 +118,7 @@ build CMakeFiles/main.dir/idlem.cpp.o: CXX_COMPILER__main ../idlem.cpp || cmake_
 #############################################
 # Link the executable main
 
-build main: CXX_EXECUTABLE_LINKER__main CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/initializem.cpp.o CMakeFiles/main.dir/statemachines.cpp.o CMakeFiles/main.dir/devicemanager.cpp.o CMakeFiles/main.dir/shutdownm.cpp.o CMakeFiles/main.dir/idlem.cpp.o
+build main: CXX_EXECUTABLE_LINKER__main CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/initializem.cpp.o CMakeFiles/main.dir/statemachines.cpp.o CMakeFiles/main.dir/devicemanager.cpp.o CMakeFiles/main.dir/idlem.cpp.o CMakeFiles/main.dir/i2c.cpp.o CMakeFiles/main.dir/camera.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/bin  -lsqlite3
   LINK_PATH = -L/usr/bin

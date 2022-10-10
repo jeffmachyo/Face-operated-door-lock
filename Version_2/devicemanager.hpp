@@ -5,36 +5,52 @@
 #include <memory>
 #include "statemachines.hpp"
 
-class AbstrasctFactory {
-
+class AbstractFactory {
     public:
-        // virtual void create(std::string)=0;   
-        virtual std::shared_ptr<AbstractState> create(std::string)=0;  
+        
+        virtual std::shared_ptr<StateMachine> create_state_machine()=0;
+        virtual std::shared_ptr<State> create_state()=0;
 };
 
-
-
-class StateMachineFactory: public AbstrasctFactory {
+class InitializeFactory: public AbstractFactory {
     public:
-        // void create(std::string);
-        std::shared_ptr<AbstractState> create(std::string);
+        
+        std::shared_ptr<StateMachine> create_state_machine();
+        std::shared_ptr<State> create_state();
+
+
 };
 
-class StateFactory: public AbstrasctFactory {
+class IdleFactory: public AbstractFactory {
     public:
-        // void create(std::string);
-        std::shared_ptr<AbstractState> create(std::string);
+        
+        std::shared_ptr<StateMachine> create_state_machine();
+        std::shared_ptr<State> create_state();
+
+
 };
+
 
 class DeviceManager {
     private:
     // Using a singleton
-        static std::unique_ptr<DeviceManager> instance;
+        static std::shared_ptr<DeviceManager> instance;
         DeviceManager();
+        std::string current_state;
+        std::string next_state;
+        std::string previous_state;
 
     public:
-    std::shared_ptr<AbstrasctFactory> get_factory(std::string);
-    static std::unique_ptr<DeviceManager> getInstance();
+    static std::shared_ptr<DeviceManager> getInstance();
+    std::string& get_current_state();
+    std::string& get_next_state();
+    std::string& get_previous_state();
+
+    void set_current_state(const std::string&);
+    DeviceManager& set_next_state(const std::string&);
+    void set_previous_state(const std::string&);
+    std::shared_ptr<State> create_state(std::string state);
+    void start();
 
 };
 

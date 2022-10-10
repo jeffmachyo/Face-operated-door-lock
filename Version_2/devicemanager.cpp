@@ -4,86 +4,98 @@
 #include "initializem.hpp"
 #include "shutdownm.hpp"
 #include "idlem.hpp"
+#include "statemachines.hpp"
 
 
-std::shared_ptr<AbstractState> StateMachineFactory::create(std::string name) {
-    if (name.compare("InitializeSM")==0) {
-        
-        std::shared_ptr<AbstractState> p1= InitializeSM::getInstance();
+std::shared_ptr<StateMachine> InitializeFactory::create_state_machine(){
 
-        return p1;
-    }
-    else if (name.compare("ShutdownSM")==0) {
-        std::shared_ptr<AbstractState> p1(new ShutdownSM());
+     std::shared_ptr<StateMachine> p1= InitializeSM::getInstance();
 
         return p1;
-    }
-    else if (name.compare("IdleSM")==0) {
-        std::shared_ptr<AbstractState> p1= IdleSM::getInstance();
-
-        return p1;
-    }
-    else {
-        throw std::runtime_error("Not a valid State Machine");
-    }
-    // std::cout<<"I make State Machines"<<std::endl;
 }
 
-std::shared_ptr<AbstractState> StateFactory::create(std::string name) {
-    // std::cout<<"I make States"<<std::endl;
-    if (name.compare("InitialState")==0) {
-        std::shared_ptr<AbstractState> p1(new InitialState());
-
+std::shared_ptr<State> InitializeFactory::create_state() {
+     std::shared_ptr<State> p1 = InitialState::getInstance();
         return p1;
-    }
-    else if (name.compare("ShutdownState")==0) {
-        std::shared_ptr<AbstractState> p1(new ShutdownState());
-
-        return p1;
-    }
-    else if (name.compare("IdleState")==0) {
-        std::shared_ptr<AbstractState> p1(new IdleState());
-
-        return p1;
-    }
-    else {
-        throw std::runtime_error("Not a valid State");
-    }
 }
 
-// void AbstrasctFactory::create() {
-//     throw std::runtime_error("Factory sub class missing");
-// }
+std::shared_ptr<StateMachine> IdleFactory::create_state_machine(){
 
-std::shared_ptr<AbstrasctFactory> DeviceManager::get_factory(std::string name) {
-    if (name.compare("StateMachine")==0) {
-        std::shared_ptr<AbstrasctFactory> p1(new StateMachineFactory());
+     std::shared_ptr<StateMachine> p1= IdleSM::getInstance();
+
         return p1;
-    } 
-    else if (name.compare("State")==0) {
-        std::shared_ptr<AbstrasctFactory> p1(new StateFactory());
+}
+
+std::shared_ptr<State> IdleFactory::create_state() {
+     std::shared_ptr<State> p1 = IdleState::getInstance();
+
         return p1;
+}
+
+DeviceManager::DeviceManager() {
+ 
+}
+
+std::string& DeviceManager::get_current_state() {
+    return this->current_state;
+}
+
+std::string& DeviceManager::get_next_state() {
+    return this->next_state;
+}
+
+std::string& DeviceManager::get_previous_state() {
+    return this->previous_state;
+}
+
+void DeviceManager::set_current_state(const std::string& state) {
+    this->current_state = state;
+}
+
+DeviceManager& DeviceManager::set_next_state(const std::string& state) {
+    this->next_state = state;
+    return *this;
+}
+
+void DeviceManager::set_previous_state(const std::string& state) {
+    this->previous_state = state;
+}
+
+
+
+std::shared_ptr<DeviceManager> DeviceManager::instance{nullptr};
+
+std::shared_ptr<DeviceManager> DeviceManager::getInstance() {
+    if (instance==nullptr) {
+        std::shared_ptr<DeviceManager> instance1(new DeviceManager());
+
+        instance1.swap(instance);
+    }
+    
+        return instance;
+}
+
+std::shared_ptr<State> DeviceManager::create_state(std::string state) {
+    if (state.compare("InitialState")==0) {
+
+        return std::make_shared<InitializeFactory>()->create_state();        
+    }
+    else if (state.compare("IdleState")==0) {
+        return std::make_shared<IdleFactory>()->create_state();
     }
     else {
         throw std::runtime_error("Factory sub class missing");
     }
-}
-DeviceManager::DeviceManager() {
-
-}
-std::unique_ptr<DeviceManager> DeviceManager::instance=0;
-
-std::unique_ptr<DeviceManager> DeviceManager::getInstance() {
-    if (instance==0) {
-        std::unique_ptr<DeviceManager> instance(new DeviceManager());
-
-        return instance;
-        
-    }
-    else {
-        std::unique_ptr<DeviceManager> instance=0;
-        return instance;
-    }
     
 }
+
+void DeviceManager::start() {
+    try {
+        this->create_state(this->get_next_state());
+    }
+    catch (const std::runtime_error& error) {
+        std::cout<<"No next state set.."<<std::endl;
+    }
+}
+
 

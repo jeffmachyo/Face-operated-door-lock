@@ -9,22 +9,25 @@
 class IdleSM: public StateMachine{
 
     private:
-        static std::unique_ptr<IdleSM> instance;
+        static std::shared_ptr<IdleSM> instance;
         IdleSM();
     
     public:
-        // using StateMachine::StateMachine;
         
         bool on_action();
         bool on_entry();
         bool on_exit();
-        static std::unique_ptr<IdleSM> getInstance();
+        static std::shared_ptr<IdleSM> getInstance();
 };
 
 class IdleState: public State {
-    public:
+    private:
+        static std::shared_ptr<IdleState> instance;
         IdleState();
+    public:
+        
         void execute();
+        static std::shared_ptr<IdleState> getInstance();
 };
 
 
