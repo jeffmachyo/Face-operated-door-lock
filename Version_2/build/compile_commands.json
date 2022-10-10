@@ -25,12 +25,6 @@
 
 {
   "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
-  "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/shutdownm.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/shutdownm.cpp",
-  "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/shutdownm.cpp"
-},
-
-{
-  "directory": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/build",
   "command": "/usr/bin/g++   -I/usr/bin  -g   -o CMakeFiles/main.dir/idlem.cpp.o -c /home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/idlem.cpp",
   "file": "/home/jeff/Documents/CPP_Projects/Face-operated-door-lock/Version_2/idlem.cpp"
 },

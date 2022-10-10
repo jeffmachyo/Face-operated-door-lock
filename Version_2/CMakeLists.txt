@@ -5,5 +5,5 @@ project(main)
 include_directories(/usr/bin)
 link_directories(/usr/bin)
 link_libraries(sqlite3)
-add_executable(${PROJECT_NAME} main.cpp initializem.cpp statemachines.cpp devicemanager.cpp shutdownm.cpp idlem.cpp i2c.cpp)
+add_executable(${PROJECT_NAME} main.cpp initializem.cpp statemachines.cpp devicemanager.cpp idlem.cpp i2c.cpp)
 
