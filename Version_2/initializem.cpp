@@ -16,20 +16,18 @@ bool InitializeSM::on_action() {
 }
 
 bool InitializeSM::on_entry() {
-    // StateMachine::on_entry();
     this->set_finish_status(false);
     std::cout<<"Initialize beginning called..."<<std::endl;
-    // State::setName("InitialState");
-    // return InitializeSM::on_action();
+    
     if (i2c_1->open_check(i2c_1->get_open_var())) {
-        printf("Open for business!");
+        std::cout<<"Open for business!"<<std::endl;
+
         return this->on_action();
     }
     return false;
 }
 
 bool InitializeSM::on_exit() {
-    // StateMachine::on_exit();
     std::cout<<"Initialize exit called..."<<std::endl;
     this->set_finish_status(true);
     

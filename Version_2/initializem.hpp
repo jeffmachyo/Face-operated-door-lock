@@ -28,7 +28,6 @@ class InitialState: public State {
         // static std::mutex m_init;
         InitialState();
     public:
-        // InitialState();
         void execute();
         static std::shared_ptr<InitialState> getInstance();
 };
