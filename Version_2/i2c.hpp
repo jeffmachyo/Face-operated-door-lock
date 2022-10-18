@@ -1,5 +1,5 @@
-#ifndef I2C_PERIPHERAL
-#define I2C_PERIPHERAL
+#ifndef I2C_PERIPHERAL_H
+#define I2C_PERIPHERAL_H
 
 #include <string>
 #include <memory>
