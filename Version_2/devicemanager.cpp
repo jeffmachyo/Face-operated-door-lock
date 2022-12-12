@@ -36,15 +36,15 @@ DeviceManager::DeviceManager() {
  
 }
 
-std::string& DeviceManager::get_current_state() {
+std::string DeviceManager::get_current_state() {
     return this->current_state;
 }
 
-std::string& DeviceManager::get_next_state() {
+std::string DeviceManager::get_next_state() {
     return this->next_state;
 }
 
-std::string& DeviceManager::get_previous_state() {
+std::string DeviceManager::get_previous_state() {
     return this->previous_state;
 }
 
@@ -52,7 +52,7 @@ void DeviceManager::set_current_state(const std::string& state) {
     this->current_state = state;
 }
 
-DeviceManager& DeviceManager::set_next_state(const std::string& state) {
+DeviceManager DeviceManager::set_next_state(const std::string& state) {
     this->next_state = state;
     return *this;
 }

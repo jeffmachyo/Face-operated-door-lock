@@ -3,12 +3,14 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 
-PWM::PWM(const int& gpio_port) {
-    this->gpio_port = gpio_port;
-    
+PWM::PWM(const int& port_number) {
+    // this->gpio_port = gpio_port;
+    gpio_port = port_number;
+    frequency=20000; //For now
+
 }
 
-bool PWM::door_open(char* buf,const int& gpio_port,const int& frequency) {
+bool PWM::door_open() {
 
     FILE* fd = fopen("/sys/class/gpio/export","w");
     fprintf(fd,"%d",gpio_port);
@@ -22,6 +24,16 @@ bool PWM::door_open(char* buf,const int& gpio_port,const int& frequency) {
     sprintf(buf,"/sys/class/gpio/gpio%d/value",gpio_port);
     fd = fopen(buf,"w");
 
+    for(int i=0;i<frequency;i++) {
+		fd = fopen(buf,"w");
+		fprintf(fd,"1");
+		fclose(fd);
+		fd = fopen(buf, "w");
+		fprintf(fd,"0");
+		fclose(fd);
+		usleep(100);
+	}
+	// return 1;
 
 
 
@@ -40,11 +52,11 @@ bool PWM::door_open(char* buf,const int& gpio_port,const int& frequency) {
 std::shared_ptr<PWM> PWM::instance{nullptr};
 std::mutex PWM::m_pwm;
 
-std::shared_ptr<PWM> PWM::getInstance(const int& gpio_port) {
+std::shared_ptr<PWM> PWM::getInstance(const int& port_number) {
     std::lock_guard<std::mutex> lock(m_pwm);
     if (instance==nullptr) {
         
-        std::shared_ptr<PWM> instance1(new PWM(gpio_port));
+        std::shared_ptr<PWM> instance1(new PWM(port_number));
         instance1.swap(instance);
     }
     return instance;

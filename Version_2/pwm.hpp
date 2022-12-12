@@ -9,14 +9,15 @@ class PWM {
     private:
         static std::shared_ptr<PWM> instance;
         static std::mutex m_pwm;
-        PWM(const int& gpio_port);
+        PWM(const int& port_number);
         int gpio_port;
-        // const char buf[100];
+        char buf[100];
+        int frequency;
 
     public:
         
-        bool door_open(char* buf,const int& gpio_port,const int& frequency);
-        static std::shared_ptr<PWM> getInstance(const int& gpio_port);
+        bool door_open();
+        static std::shared_ptr<PWM> getInstance(const int& port_number);
      
 };
 
