@@ -5,9 +5,11 @@
 #include "i2c.hpp"
 #include "camera.hpp"
 #include "unistd.h"
+#include "pwm.hpp"
 
 auto i2c_1 = I2C::getInstance("/dev/i2c-1");
 auto cam_1 = Camera::getInstance();
+auto pwm_1 = PWM::getInstance(5);
 std::string file_path = "/home/pi/Documents/TELE6550/Final/New_Image.jpg";
 
 
@@ -20,6 +22,8 @@ bool InitializeSM::on_action() {
     cam_1->stop_pic();
 
     std::cout<<"Image successful..."<<std::endl;
+    sleep(1);
+    pwm_1->door_open();
 
     return this->on_exit();
 }

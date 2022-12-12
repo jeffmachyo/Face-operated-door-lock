@@ -110,6 +110,13 @@ build CMakeFiles/main.dir/camera.cpp.o: CXX_COMPILER__main ../camera.cpp || cmak
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir
 
+build CMakeFiles/main.dir/pwm.cpp.o: CXX_COMPILER__main ../pwm.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/pwm.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/usr/bin
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target main
@@ -118,7 +125,7 @@ build CMakeFiles/main.dir/camera.cpp.o: CXX_COMPILER__main ../camera.cpp || cmak
 #############################################
 # Link the executable main
 
-build main: CXX_EXECUTABLE_LINKER__main CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/initializem.cpp.o CMakeFiles/main.dir/statemachines.cpp.o CMakeFiles/main.dir/devicemanager.cpp.o CMakeFiles/main.dir/idlem.cpp.o CMakeFiles/main.dir/i2c.cpp.o CMakeFiles/main.dir/camera.cpp.o
+build main: CXX_EXECUTABLE_LINKER__main CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/initializem.cpp.o CMakeFiles/main.dir/statemachines.cpp.o CMakeFiles/main.dir/devicemanager.cpp.o CMakeFiles/main.dir/idlem.cpp.o CMakeFiles/main.dir/i2c.cpp.o CMakeFiles/main.dir/camera.cpp.o CMakeFiles/main.dir/pwm.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/bin  -lsqlite3
   LINK_PATH = -L/usr/bin
