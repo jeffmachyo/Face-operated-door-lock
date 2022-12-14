@@ -1,3 +1,4 @@
+#include "imagecapturesm.hpp"
 #include "initializem.hpp"
 #include <string>
 #include <iostream>
@@ -13,23 +14,22 @@ auto pwm_1 = PWM::getInstance(5);
 std::string file_path = "/home/pi/Documents/TELE6550/Final/New_Image.jpg";
 
 
-bool InitializeSM::on_action() {
+bool ImageCaptureSM::on_action() {
     std::cout<<"Initialize action called..."<<std::endl;
     
-    
-    // cam_1->take_pic(file_path);
-    // fflush(stdout);
-    // sleep(5);
-    // cam_1->stop_pic();
+    cam_1->take_pic(file_path);
+    fflush(stdout);
+    sleep(5);
+    cam_1->stop_pic();
 
-    // std::cout<<"Image successful..."<<std::endl;
-    // sleep(1);
-    // pwm_1->door_open();
+    std::cout<<"Image successful..."<<std::endl;
+    sleep(1);
+    pwm_1->door_open();
 
     return this->on_exit();
 }
 
-bool InitializeSM::on_entry() {
+bool ImageCaptureSM::on_entry() {
     this->set_finish_status(false);
     std::cout<<"Initialize beginning called..."<<std::endl;
     
@@ -41,7 +41,7 @@ bool InitializeSM::on_entry() {
     return false;
 }
 
-bool InitializeSM::on_exit() {
+bool ImageCaptureSM::on_exit() {
     std::cout<<"Initialize exit called..."<<std::endl;
     this->set_finish_status(true);
     
@@ -49,7 +49,7 @@ bool InitializeSM::on_exit() {
     return true;
 }
 
-void InitialState::execute() {
+void ImageCaptureState::execute() {
     
     auto init_sm = std::make_shared<InitializeFactory>()->create_state_machine();
     
@@ -59,25 +59,25 @@ void InitialState::execute() {
     }
      
 }
-InitialState::InitialState() {
+ImageCaptureState::ImageCaptureState() {
     this->execute();
 }
 
-InitializeSM::InitializeSM() {
-    this->setName("InitializeSM");
+ImageCaptureSM::ImageCaptureSM() {
+    this->setName("ImageCaptureSM");
     // StateMachine::set_name("InitializeSM");
     this->on_entry();
     
 }
 
-std::shared_ptr<InitializeSM> InitializeSM::instance{nullptr};
-std::mutex InitializeSM::m_init;
+std::shared_ptr<ImageCaptureSM> ImageCaptureSM::instance{nullptr};
+std::mutex ImageCaptureSM::m_init;
 
-std::shared_ptr<InitializeSM> InitializeSM::getInstance() {
+std::shared_ptr<ImageCaptureSM> ImageCaptureSM::getInstance() {
     std::lock_guard<std::mutex> lock(m_init);
     if (instance==nullptr) {
         
-        std::shared_ptr<InitializeSM> instance1(new InitializeSM());
+        std::shared_ptr<ImageCaptureSM> instance1(new ImageCaptureSM());
         instance1.swap(instance);
     }
     return instance;
