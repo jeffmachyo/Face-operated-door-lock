@@ -22,14 +22,14 @@ class ImageCaptureSM: public StateMachine{
         static std::shared_ptr<ImageCaptureSM> getInstance();
 };
 
-class InitialState: public State {
+class ImageCaptureState: public State {
     private:
-        static std::shared_ptr<InitialState> instance;
+        static std::shared_ptr<ImageCaptureState> instance;
         // static std::mutex m_init;
-        InitialState();
+        ImageCaptureState();
     public:
         void execute();
-        static std::shared_ptr<InitialState> getInstance();
+        static std::shared_ptr<ImageCaptureState> getInstance();
 };
 
 

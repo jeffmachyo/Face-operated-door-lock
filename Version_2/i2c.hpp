@@ -17,6 +17,9 @@ class I2C {
         bool open_check(const int& var);
         bool status_check(int& st,int& var,const int& sl_addr,const int& i2c_addr);
         bool get_open_var();
+        bool start();
+        bool send_message();
+        bool receive_message();
         static std::shared_ptr<I2C> getInstance(const std::string& path);
         bool get_status_var(); 
 };

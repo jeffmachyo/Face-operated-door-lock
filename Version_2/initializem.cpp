@@ -16,14 +16,15 @@ std::string file_path = "/home/pi/Documents/TELE6550/Final/New_Image.jpg";
 bool InitializeSM::on_action() {
     std::cout<<"Initialize action called..."<<std::endl;
     
-    cam_1->take_pic(file_path);
-    fflush(stdout);
-    sleep(5);
-    cam_1->stop_pic();
+    
+    // cam_1->take_pic(file_path);
+    // fflush(stdout);
+    // sleep(5);
+    // cam_1->stop_pic();
 
-    std::cout<<"Image successful..."<<std::endl;
-    sleep(1);
-    pwm_1->door_open();
+    // std::cout<<"Image successful..."<<std::endl;
+    // sleep(1);
+    // pwm_1->door_open();
 
     return this->on_exit();
 }

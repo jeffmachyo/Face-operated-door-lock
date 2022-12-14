@@ -2,11 +2,15 @@
 #include <string>
 #include <iostream>
 #include "devicemanager.hpp"
+#include "i2c.hpp"
 
+#define I2C_ADDR 0x10
+
+auto i2c_1 = I2C::getInstance("/dev/i2c-1");
 
 bool IdleSM::on_action() {
     std::cout<<"Idle action called..."<<std::endl;
-    std::cout<<"Waiting.."<<std::endl;
+    
 
     // Add if command comes in move to another state
     return this->on_exit();
