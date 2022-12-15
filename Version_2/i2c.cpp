@@ -2,9 +2,15 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 
 I2C::I2C(const std::string& path) {
     fd = open (path.c_str(),O_RDWR);
+}
+
+bool I2C::start(const int& i2c_address) {
+    status=ioctl(fd,I2C_SLAVE,i2c_address);
 }
 
 bool I2C::open_check(const int& var) {
@@ -34,6 +40,13 @@ bool I2C::get_open_var() {
 
 bool I2C::get_status_var() {
     return status;
+}
+
+bool I2C::send_message(const uint8_t* buffer) {
+    write(fd, buffer, 1);
+}
+bool I2C::receive_message(uint8_t* buffer) {
+    read(fd, buffer, 1);
 }
 
 std::shared_ptr<I2C> I2C::instance{nullptr};

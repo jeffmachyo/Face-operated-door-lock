@@ -10,6 +10,7 @@ auto i2c_1 = I2C::getInstance("/dev/i2c-1");
 
 bool IdleSM::on_action() {
     std::cout<<"Idle action called..."<<std::endl;
+    i2c_1->start(I2C_ADDR);
     
 
     // Add if command comes in move to another state
