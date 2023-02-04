@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/sensor.cpp.o CMakeFiles/main.dir/camera.cpp.o CMakeFiles/main.dir/pwm_out.cpp.o CMakeFiles/main.dir/cloud_service.cpp.o CMakeFiles/main.dir/db_store.cpp.o CMakeFiles/main.dir/base64.cpp.o -o main   -L/usr/bin  -Wl,-rpath,/usr/bin -lsqlite3 
