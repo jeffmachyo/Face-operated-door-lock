@@ -9,7 +9,7 @@ pipeline {
         sh 'echo "Building..."'
         sh 'chmod +x ./Version_1/installer.sh'
         sh 'bash ./Version_1/installer.sh'
-        archiveArtifacts artifacts: './Version_1/out/build/*', fingerprint: true
+        archiveArtifacts artifacts: 'Version_1/out/build/*', fingerprint: true
       }
     }
     stage('Test') {
